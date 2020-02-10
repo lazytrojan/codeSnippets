@@ -48,8 +48,7 @@ class DSContext {
 }
 
 
-
-
+// Use registry pattern along with Strategy pattern
 
 public class Strategy {
     static Map<String, DataStreamDeploymentStrategy> registry = new HashMap<>();
