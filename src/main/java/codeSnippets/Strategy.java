@@ -1,6 +1,5 @@
 package codeSnippets;
 
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,7 +16,7 @@ class MCConfig implements config {
 }
 
 interface DataStreamDeploymentStrategy {
-    void doAnalyse(config foo) ;
+    void doAnalyse(config foo);
 }
 
 class S3DataStreamDeployment implements DataStreamDeploymentStrategy {
@@ -34,7 +33,6 @@ class MCDataStreamDeployment implements DataStreamDeploymentStrategy {
     }
 }
 
-
 class DSContext {
     private DataStreamDeploymentStrategy strategy;
 
@@ -47,7 +45,6 @@ class DSContext {
     }
 }
 
-
 // Use registry pattern along with Strategy pattern
 
 public class Strategy {
@@ -55,8 +52,9 @@ public class Strategy {
 
     static {
         registry.put("S3", new S3DataStreamDeployment());
-        registry.put("SFMC",new  MCDataStreamDeployment());
+        registry.put("SFMC", new MCDataStreamDeployment());
     }
+
     public static void main(String[] args) {
         config foo = new s3Config();
         DSContext context = new DSContext(registry.get("S3"));
