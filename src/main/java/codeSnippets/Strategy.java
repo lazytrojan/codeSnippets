@@ -21,26 +21,26 @@ interface DataStreamDeploymentStrategy {
 
 class S3DataStreamDeployment implements DataStreamDeploymentStrategy {
     @Override
-    public void doAnalyse(config foo) {
+    public void doAnalyse(final config foo) {
         System.out.println(foo.getClass());
     }
 }
 
 class MCDataStreamDeployment implements DataStreamDeploymentStrategy {
     @Override
-    public void doAnalyse(config foo) {
+    public void doAnalyse(final config foo) {
         System.out.println(foo.getClass());
     }
 }
 
 class DSContext {
-    private DataStreamDeploymentStrategy strategy;
+    private final DataStreamDeploymentStrategy strategy;
 
-    public DSContext(DataStreamDeploymentStrategy strategy) {
+    public DSContext(final DataStreamDeploymentStrategy strategy) {
         this.strategy = strategy;
     }
 
-    public void doAnalyse(config foo) {
+    public void doAnalyse(final config foo) {
         strategy.doAnalyse(foo);
     }
 }
@@ -55,7 +55,7 @@ public class Strategy {
         registry.put("SFMC", new MCDataStreamDeployment());
     }
 
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         config foo = new s3Config();
         DSContext context = new DSContext(registry.get("S3"));
         context.doAnalyse(foo);
